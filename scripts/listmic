@@ -1,0 +1,2 @@
+#!/bin/bash
+pactl list source-outputs | grep --color=none -E "Source Output|application.process"
