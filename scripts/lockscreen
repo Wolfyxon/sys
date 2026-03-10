@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export DISPLAY=:$(ls /tmp/.X11-unix | grep -o '[0-9]\+' | sort -n | tail -1)
+
+#export XSECURELOCK_SAVER=saver_mpv
+#export XSECURELOCK_LIST_VIDEOS_COMMAND="echo /home/wolfyxon/Pictures/wallpapers/firewatchNight.png"
+export XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0
+export XSECURELOCK_BURNIN_MITIGATION=3
+export XSECURELOCK_BLANK_TIMEOUT=10
+export XSECURELOCK_COMPOSITE_OBSCURER=0
+
+xsecurelock

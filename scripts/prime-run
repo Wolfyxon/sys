@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+
+# Prime doesn't work correctly when discrete
+# graphics mode is enabled.
+# This detects it and disables prime (normally it's HDMI-1-0)
+CHECK=$(xrandr | grep HDMI-0)
+
+if [[ $CHECK ]]; then
+   exec "$@" 
+   exit
+fi
+
+export __NV_PRIME_RENDER_OFFLOAD=1
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export __VK_LAYER_NV_optimus=NVIDIA_only
+export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
+exec "$@"

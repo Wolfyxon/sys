@@ -1,0 +1,4 @@
+#!/bin/bash
+
+VALUE=$(cat /sys/class/thermal/thermal_zone0/temp)
+echo $((VALUE / 1000))

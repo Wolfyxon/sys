@@ -1,0 +1,15 @@
+#!/bin/bash
+# Starts my external monitor
+
+export FLAGS="--mode 1920x1080"
+export RELATIVE="--left-of"
+
+echo ": Trying hybrid graphics"
+xrandr --output HDMI-1-0 $FLAGS $RELATIVE eDP-1
+
+echo ": Trying discrete graphics"
+xrandr --output HDMI-0 $FLAGS $RELATIVE DP-0
+xrandr --output DP-0 --primary
+
+echo ": Setting wallpaper"
+setwallpaper
